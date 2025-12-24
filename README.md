@@ -13,15 +13,16 @@ A simple Retrieval-Augmented Generation (RAG) API for asking questions about upl
     pip install -r requirements.txt
 
 ## 🚀 Quick Start/Run
-    For development(locally): fastapi dev main.py
+- For development(locally): fastapi dev main.py
+
 
 ## How to use it?
-    - Upload all the files at once at the very beginning.
-    - Ask questions.
+- Upload all the files at once at the very beginning.
+- Ask questions.
 
 ## Enviroment Variables(Required)
     GEMINI_API_KEY=your_gemini_api_key
-This must be present in your env variables.
+This must be present in your environment variables.
 
 ## API Documentation
     1. ('/') -> returns index.html
