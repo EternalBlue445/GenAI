@@ -1,6 +1,6 @@
 # GenAI
 
-A simple Retrieval-Augmented Generation (RAG) API for asking questions about uploaded documents (PDF, DOCX, TXT, JPG). Uses FastAPI, Google Gemini embeddings and Chroma vector database.
+A simple Retrieval-Augmented Generation (RAG) API for asking questions about uploaded documents. Uses FastAPI, Google Gemini and Chroma vector database.
 
 ## ✨ Features
 - Upload multiple files (PDF, DOCX, TXT, JPG , PNG, CSV, DB)
