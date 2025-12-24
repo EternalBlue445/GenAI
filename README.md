@@ -18,7 +18,8 @@ A simple Retrieval-Augmented Generation (RAG) API for asking questions about upl
     - Ask questions.
 
 ## Enviroment Variables(Required)
-GEMINI_API_KEY=your_gemini_api_key_here . This must be present in your env variables.
+    GEMINI_API_KEY=your_gemini_api_key
+This must be present in your env variables.
 
 ## API Documentation
     1. ('/') -> returns index.html
