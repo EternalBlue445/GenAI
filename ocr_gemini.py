@@ -22,7 +22,7 @@ class GeminiOCR:
             'quota exceeded', 'rate limit', 'requests per day', 
             'free limit', '429', 'quota_exceeded', 'resource_exhausted'
         ]):
-            return "Gemini hits free limit, can't provide answers right now."
+            return "You have exceeded the Gemini free limit,it can't provide answers right now. Try again after some time."
         raise exception
     
     def answer(self, prompt, language="English"):
