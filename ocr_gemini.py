@@ -15,9 +15,24 @@ class GeminiOCR:
         self.model = genai.GenerativeModel(self.model_name)
         self.embedding_model = SentenceTransformer('all-mpnet-base-v2')
     
+    def _handle_gemini_error(self, exception):
+    
+        error_msg = str(exception).lower()
+        if any(phrase in error_msg for phrase in [
+            'quota exceeded', 'rate limit', 'requests per day', 
+            'free limit', '429', 'quota_exceeded', 'resource_exhausted'
+        ]):
+            return "Gemini hits free limit, can't provide answers right now."
+        raise exception
+    
     def answer(self, prompt, language="English"):
-        response = self.model.generate_content([prompt])
-        return response.text
+        try:
+            response = self.model.generate_content([prompt])
+        
+            return response.text
+        except Exception as e:
+            print(e)
+            return self._handle_gemini_error(e)
     
     def extract_text(self, image_path, language):
         try:
@@ -31,8 +46,7 @@ class GeminiOCR:
             print(f"Image conversion error: {str(ve)}")
             raise
         except Exception as e:
-            print(f"Text extraction failed: {str(e)}")
-            raise
+            return self._handle_gemini_error(e)
     
     def get_embeddings(self, text):
         try:
@@ -46,7 +60,6 @@ class GeminiOCR:
             print(f"Embedding generation failed: {str(e)}")
             return []
     
-    
     def verify_connection(self):
         try:
             test_model = genai.GenerativeModel('gemini-flash')
@@ -54,4 +67,6 @@ class GeminiOCR:
             return True
         except Exception as e:
             print(f"API connection verification failed: {str(e)}")
+            if "Gemini hits free limit" in str(e):
+                return str(e)
             return False
