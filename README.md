@@ -17,7 +17,7 @@ A simple Retrieval-Augmented Generation (RAG) API for asking questions about upl
     pip install -r requirements.txt
 
 ## Quick Start/Run
-- For development(locally): fastapi dev main.py
+    For development(locally): fastapi dev main.py
 
 
 ## How to use it?
