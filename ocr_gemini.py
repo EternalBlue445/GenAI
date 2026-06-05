@@ -50,7 +50,7 @@ class GeminiOCR:
     
     def get_embeddings(self, text):
         if self.embedding_model is None:
-            self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+            self.embedding_model = SentenceTransformer('paraphrase-MiniLM-L3-v2')
         try:
             if isinstance(text, list):
                 embeddings = self.embedding_model.encode(text, convert_to_numpy=True)
