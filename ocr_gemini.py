@@ -13,7 +13,7 @@ class GeminiOCR:
     def initialize(self):
         genai.configure(api_key=self.api_key)
         self.model = genai.GenerativeModel(self.model_name)
-        self.embedding_model = SentenceTransformer('all-mpnet-base-v2')
+        self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
     
     def _handle_gemini_error(self, exception):
     
