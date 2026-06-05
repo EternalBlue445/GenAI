@@ -13,7 +13,7 @@ class GeminiOCR:
     def initialize(self):
         genai.configure(api_key=self.api_key)
         self.model = genai.GenerativeModel(self.model_name)
-        self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.embedding_model = None
     
     def _handle_gemini_error(self, exception):
     
@@ -49,6 +49,8 @@ class GeminiOCR:
             return self._handle_gemini_error(e)
     
     def get_embeddings(self, text):
+        if self.embedding_model is None:
+            self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
         try:
             if isinstance(text, list):
                 embeddings = self.embedding_model.encode(text, convert_to_numpy=True)
